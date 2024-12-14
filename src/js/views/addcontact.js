@@ -27,25 +27,27 @@ const Addcontacts = () => {
 		<div className="container">
 			<ul className="list-group">
 				<h1>Add a new Contact</h1>
-				<h2>Full Name</h2>
-				<input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setFullName(e.target.value)} value={fullName} />
-				<h2>Email</h2>
-				<input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} value={email} />
-				<h2>Phone</h2>
-				<input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setPhone(e.target.value)} value={phone} />
-				<h2>Address</h2>
-				<input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setAddress(e.target.value)} value={address} />
+				<h5>Full Name</h5>
+				<input type="text" placeholder="Full Name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setFullName(e.target.value)} value={fullName} />
+				<h5>Email</h5>
+				<input type="text" placeholder="Enter email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} value={email} />
+				<h5>Phone</h5>
+				<input type="text" placeholder="Enter phone" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setPhone(e.target.value)} value={phone} />
+				<h5>Address</h5>
+				<input type="text" placeholder="Enter address" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setAddress(e.target.value)} value={address} />
 
 				<div className="mt-3">
 					<button className="btn btn-primary w-100" onClick={() => handleSubmit()}>Save</button>
 				</div>
 
 			</ul>
-			<Link to="/">
-				<span className="btn btn-primary btn-lg " href="#" role="button">
+			<Link to="/" style={{ textDecoration: 'none' }}>
+				<span className="btn btn-primary btn-lg" style={{ backgroundColor: 'transparent', border: 'none', color: '#007bff', padding: 0, cursor: 'pointer' }}
+					role="button">
 					go back to contacts
 				</span>
 			</Link>
+
 
 		</div>
 	);
