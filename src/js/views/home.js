@@ -1,15 +1,27 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useContext } from "react";
 import "../../styles/home.css";
+import Card from "../component/Card.jsx"
+import Demo from "./addcontact.js";
+import { Context } from "../store/appContext.js";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+
+
+
+// aqui primera vista de los usuarios
+export const Home = () => {
+	//hook useEstate 
+	const { actions, store } = useContext(Context)// hook ayuda a acceso al contexto ,pasa datos
+	// return solo lo que qiuero que se vea
+	return (
+		< div className="text-center mt-5" >
+
+			{store.contacts.map((contact, index) => (
+				<Card contact={contact} key={index} />
+
+			)
+
+			)}
+
+		</div >
+	);
+};
