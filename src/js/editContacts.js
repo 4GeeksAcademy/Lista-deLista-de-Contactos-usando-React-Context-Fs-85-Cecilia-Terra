@@ -35,7 +35,7 @@ const EditContacts = () => {
         address: address,
     }
     const editSubmit = () => {
-        actions.editContacts(id, contact)
+        actions.editContacts(params.id, contact)
         navigate("/")
 
     }

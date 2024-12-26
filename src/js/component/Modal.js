@@ -14,8 +14,7 @@ const Modal = ({ isOpen, onClose, id }) => {
         onClose()
     }
 
-    //logitech mecanico, para programar
-    //siempre se redacta igual
+   
 
     if (!isOpen)
         return null;
