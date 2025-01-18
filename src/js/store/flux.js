@@ -8,10 +8,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 		//GET
 		actions: {
 
+			createAgenda: async () => { //async desactiva o desactiva
+				try {
+					const response = await fetch("https://playground.4geeks.com/contact/agendas/Cecilia",
+						{
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json"
+							},
+						}
+					); //offset=0&limit=100 esto sirve para limitar la cantidad de info me dara en este caso 100 usuarios offset
+					if (!response.ok) throw new Error("Failed to fetch data");
+
+					const data = await response.json();
+					console.log("Agenda creada", data);
+
+				} catch (error) {
+					console.error("Error fetching data:", error);
+				}
+			},
+
 			getContacts: async () => { //async desactiva o desactiva
 				try {
-					const response = await fetch("https://playground.4geeks.com/contact/agendas/Cecilia"); //offset=0&limit=100 esto sirve para limitar la cantidad de info me dara en este caso 100 usuarios offset
-					if (!response.ok) throw new Error("Failed to fetch data");
+					const response = await fetch("https://playground.4geeks.com/contact/agendas/Cecilia/contacts"); //offset=0&limit=100 esto sirve para limitar la cantidad de info me dara en este caso 100 usuarios offset
+					if (!response.ok) {
+
+						return getActions().createAgenda();
+					};
+					console.log("AQUI", response);
+
 
 					const data = await response.json();
 					setStore({ contacts: data.contacts });//contacts []
@@ -58,14 +83,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//PUT
-			editContacts: async (id, newItem) => {
+			editContacts: async (id, editedContact) => {
 				try {
 					const response = await fetch(`https://playground.4geeks.com/contact/agendas/Cecilia/contacts/${id}`, {
 						method: "PUT",
 						headers: {
 							"Content-Type": "application/json"
 						},
-						body: JSON.stringify(newItem)
+						body: JSON.stringify(editedContact)
 					});
 
 					if (response.ok) {

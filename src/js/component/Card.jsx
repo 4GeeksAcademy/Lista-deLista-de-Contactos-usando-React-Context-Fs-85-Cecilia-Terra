@@ -40,4 +40,3 @@ const Card = ({ contact }) => {
 };
 export default Card;
 
-
